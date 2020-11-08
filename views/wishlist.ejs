@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Shop4U Store</title>
+		<%- include('./include/links') %>
+
+	</head>
+	<body>
+	
+	<div class="whole_container">
+		<%- include('./include/header') %>
+		<div class="wish-sec">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-10 offset-lg-1">
+						<div><h2>Wishlist</h2></div>
+						<div class="wish-items">
+							<% if(!!locals.items){ items.forEach((item)=>{ %>
+							<div class="wish-idv-item-details d-flex flex-md-row flex-column justify-content-between align-items-center">
+								<div class="detail-cell"><img src="img/<%= item.img_path %>" alt="Macbook Air"></div>
+								<div class="detail-cell">
+									<div class="detail-title">Name</div>
+									<div class="detail-info"><%= item.name %></div>
+								</div>
+								<div class="detail-cell de-flex">
+									<div class="detail-title">Color</div>
+									<div class="detail-info"><%= item.color %></div>
+								</div>
+								<div class="detail-cell de-flex">
+									<div class="detail-title">Price</div>
+									<div class="detail-info"><%= item.price %></div>
+								</div>
+								<div class="detail-cell de-flex">
+									<div class="order-icon">
+										<a href="/wishlist/wish-remove/<%= item._id %>" class="d-flex justify-content-center align-items-center"><i class="material-icons">&#xe872;</i></a>
+									</div>
+									<div class="order-icon">
+										<a href="/cart/cart-update/<%= item._id %>" class="d-flex justify-content-center align-items-center"><i class="material-icons">&#xe854;</i></a>
+									</div>
+								</div>
+							</div>
+							<% }) } %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<%
+		include ('./include/footer')
+	%>
+	</div>
+	<script>
+		function show(x){
+			var v=document.getElementById(x);
+			if(v.style.display=="none"){
+				v.style.display='block';
+			}
+			else{
+				v.style.display='none';
+			}
+		}
+	</script>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	</body>
+</html> 

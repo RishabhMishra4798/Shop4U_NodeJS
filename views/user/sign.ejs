@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Shop4U</title>
+		<%-
+			include ('../include/links')
+		%>
+		<style type="text/css">
+			.intro h2 {
+	            font-weight: bold;
+	            padding-top: 60px;
+	            color: #000;
+	        }
+	        .signup{
+	        	padding-top: 54px;
+				padding-bottom: 45px;
+	        }
+		</style>
+	</head>
+	<body>
+	
+	<div class="whole_container">
+		<div class="intro">
+            <h2 class="text-center">Signup into Shop4U</h2>
+        </div>
+		<div class="signup">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3">
+						<div class="sign-form text-center">
+							<div class="form-head"><h1>SIGN</h1></div>
+							<div class="form-input">
+								<form autocomplete='off' method="post" action="/user/register">
+									<div class="form-group">
+										<input type="name" name='name' class="form-control" placeholder="Enter Name" pattern="[a-zA-Z ]+" required>
+									</div>
+									<div class="form-group">
+										<input name='email' type="email" class="form-control" placeholder="Enter Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+									</div>
+									<div class="form-group">
+										<input type="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required class="form-control" placeholder="Enter Password Ex Abcd@123" name='password'>
+									</div>
+									<div class="form-group">
+										<input class="form-control" name='contact' placeholder="Enter Contact" type='numeric' pattern="[0-9]{10}" required>
+									</div>
+									<div class="form-group">
+										<a href=""><input type="submit" class="btn btn-my" value="Submit"></a>
+									</div>
+									<% if(!!locals.errors){ %> 
+										<%	errors.forEach((error)=>{ %>
+										<div class="error_box" id="err<%= error.param %>">
+											<div class="close_icn" onclick="hide('err<%= error.param %>');">
+												<i class="material-icons" id="head-down-icon">&#xe14c;</i>
+											</div>
+											<div class="err_dtl">
+												<p><%= error.msg %></p>
+											</div>
+										</div>
+										<% }) %>
+								  <% } %>
+								</form>
+							</div>
+							<div class="panel-footer"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<script>
+		function show(x){
+			var v=document.getElementById(x);
+			if(v.style.display=="none"){
+				v.style.display='block';
+			}
+			else{
+				v.style.display='none';
+			}
+		}
+		function hide(x){
+		    cl = document.getElementById(x);
+		    cl.style.display='none';
+		    
+		}
+	</script>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>

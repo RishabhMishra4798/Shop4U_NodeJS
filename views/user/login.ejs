@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Shop4U Store</title>
+		<%-
+			include ('../include/links')
+		%>
+		<style type="text/css">
+			.intro h2 {
+            font-weight: bold;
+            padding-top: 60px;
+            color: #000;
+        }
+        .error_box.email {
+		    position: absolute;
+		    top: 15px;
+		    right: 115%;
+		}
+		.error_box.pass::after{
+			border:none;
+		}
+		.error_box.pass {
+		    position: absolute;
+		    top: 74px;
+		    left: 115%;
+		}
+		.error_box.pass::before{
+			  content: "";
+			position: absolute;
+			right: 100%;
+			top: 50%;
+			height: 0;
+			width: 0;
+			margin-top: -12px;
+			border: solid transparent;
+			border-right-color: #000;
+			border-width: 12px;
+			pointer-events: none;
+			}
+		</style>
+	</head>
+	<body>
+	
+	<div class="whole_container success-page">
+		<div class="intro">
+            <h2 class="text-center">Login into Shop4U</h2>
+        </div>
+		<div class="login">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3">
+						<div class="login-form text-center">
+							<div class="form-head"><h1>LOGIN</h1></div>
+							<div class="form-input">
+								<form method="post" action="/user/login">
+									<div class="form-group">
+										<input type="email" class="form-control" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required placeholder="Enter Email">
+									</div>
+									<div class="form-group">
+										<input type="password" name="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required class="form-control" placeholder="Enter Password">
+									</div>
+									<div class="form-group">
+										<input type="submit" class="btn btn-my" value="Submit">
+									</div>
+										<%
+											if(!!locals.error && error != ''){
+										%> 
+												<div class="error_box" id="errpass">
+													<div class="close_icn" onclick="hide('errpass');">
+														<i class="material-icons" id="head-down-icon">&#xe14c;</i>
+													</div>
+													<div class="err_dtl">
+														<p><%= error %></p>
+													</div>
+												</div>
+										<%
+											}
+										%>						          
+								</form>
+							</div>
+							<div class="panel-footer"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="copyright">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						
+						<div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
+							<div class="copyright_content">
+	Shop4U made by <a href="#" target="_blank">Rishabh Mishra</a>
+	</div>
+							<div class="ml-sm-auto">
+								<div class="footer_social">
+									<ul class="">
+										<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+										<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+										<li><a href="#"><i class="fab fa-youtube"></i></a></li>
+										<li><a href="#"><i class="fab fa-google"></i></a></li>
+										<li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		function show(x){
+			var v=document.getElementById(x);
+			if(v.style.display=="none"){
+				v.style.display='block';
+			}
+			else{
+				v.style.display='none';
+			}
+		}
+		function hide(x){
+		    cl = document.getElementById(x);
+		    cl.style.display='none';
+		    
+		}
+	</script>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	</body>
+</html> 
